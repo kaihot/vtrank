@@ -12,7 +12,7 @@
         </v-toolbar>
         <v-navigation-drawer app temporary absolute v-model="drawer"></v-navigation-drawer>
         <v-layout row pb-2 mx-2 style="background:#fff;">
-            <v-flex xs8 offset-xs2>
+            <v-flex xs10 offset-xs2>
                 <nuxt></nuxt>
             </v-flex>
         </v-layout>

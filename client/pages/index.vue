@@ -10,7 +10,7 @@
                 {{ item.text }}
             </v-breadcrumbs-item>
         </v-breadcrumbs>
-        
+
         <v-tabs
                 slot="extension"
                 v-model="model"
@@ -27,23 +27,73 @@
                 今月
             </v-tab>
         </v-tabs>
+        <v-container grid-list-md text-xs-center>
+            <v-layout row wrap align-baseline>
+                <v-flex xs1>
+                    <v-list-tile-avatar color="rankBox" class="justify-center">
+                        <div>
+                            <span>1</span>
+                        </div>
+                    </v-list-tile-avatar>
+                </v-flex>
+                <v-flex xs1>
+                    <v-avatar
+                            slot="activator"
+                            size="50px"
+                    >
+                        <img
+                                src="https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                        >
+                    </v-avatar>
+                </v-flex>
+
+                <v-flex xs2>
+                    <v-card-title primary-title>
+                            <span>キズナアイ</span><br>
+                            <span class="grey--text caption text-xs-right">A.I Games</span>
+                    </v-card-title>
+                </v-flex>
+                <v-flex xs7>
+                    <v-card dark color="primary">
+                        <v-card-text class="px-0">12</v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
+
+
+
+
         <v-tabs-items v-model="model">
             <v-tab-item
                     v-for="i in 3"
                     :key="i"
                     :id="`tab-${i}`"
             >
-                <v-list three-line>
+                <v-list two-line>
                     <template v-for="(item, index) in items">
                         <v-list-tile :key="index" avatar>
-                            <v-list-tile-avatar>
-
+                            <v-list-tile-avatar color="rankBox">
+                                <div>
+                                    <span>{{index+1}}</span>
+                                </div>
                             </v-list-tile-avatar>
                             <v-list-tile-avatar>
                                 <img :src="item.avatar">
                             </v-list-tile-avatar>
                             <v-list-tile-content>
                                 <v-list-tile-title v-html="item.title"></v-list-tile-title>
+                                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+                            </v-list-tile-content>
+                            <v-list-tile-content>
+                                <v-list-tile-title v-html="item.fanCount"></v-list-tile-title>
+                                <v-list-tile-sub-title v-html="item.increase"></v-list-tile-sub-title>
+                            </v-list-tile-content>
+                            <v-list-tile-content>
+                                <v-list-tile-title v-html="item.increaseRate"></v-list-tile-title>
+                            </v-list-tile-content>
+                            <v-list-tile-content>
+                                <v-list-tile-title v-html="item.totalView"></v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
                     </template>
@@ -61,15 +111,19 @@
                 text: "a",
                 model: 'tab-2',
                 items: [
-                    { text: "aaa", avatar: '/static/doc-images/lists/1.jpg', title: 'Brunch this weekend?', subtitle: "<span class='text--primary'>Ali Connors</span>asd" },
-                    { text: "bbb", avatar: '/static/doc-images/lists/1.jpg', title: 'Brunch this weekend?', subtitle: "<span class='text--primary'>Ali Connors</span>asd" },
-                    { text: "aaccca", avatar: '/static/doc-images/lists/1.jpg', title: 'Brunch this weekend?', subtitle: "<span class='text--primary'>Ali Connors</span>asd" },
+                    { fanCount:"1,890,470人", increase:"+34234", increaseRate:"+5%", totalView:"122,225,939 回", text: "aaa", avatar: 'https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg', title: 'キズナアイ', subtitle: "A.I games" },
+                    { fanCount:"1,890,470人", increase:"+34234", increaseRate:"+5%", totalView:"122,225,939 回", text: "bbb", avatar: 'https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg', title: 'キズナアイ(ゲーム)', subtitle: "A.I games" },
+                    { fanCount:"1,890,470人", increase:"+34234", increaseRate:"+5%", totalView:"122,225,939 回", text: "aaccca", avatar: 'https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg', title: 'ときのそら', subtitle: "A.I games" },
                 ]
             }
         }
     }
 </script>
 
-<style>
-
+<style scoped>
+    .rankBox{
+        background-color: #009688;
+        border-radius: 5px !important;
+        color: #fff;
+    }
 </style>

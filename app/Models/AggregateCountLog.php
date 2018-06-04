@@ -16,7 +16,8 @@ class AggregateCountLog extends Model
         "day_identify",
         "count",
         "exec_at",
-        "channel_id"
+        "channel_id",
+        "youtuber_id"
     ];
 
 }

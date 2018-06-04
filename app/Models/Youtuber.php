@@ -21,16 +21,18 @@ class Youtuber extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function viewCountLog(){
-        return $this->belongsTo("ViewCountLog::class", "youtuber_id");
+        return $this->hasMany("App\Models\ViewCountLog", "youtuber_id");
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function subscribeCountLog(){
-        return $this->belongsTo("SubscribeCountLog:class", "youtuber_id");
+        return $this->hasMany("App\Models\SubscribeCountLog", "youtuber_id");
     }
+
+
 }

@@ -24,6 +24,8 @@ CREATE TABLE `subscribe_count_log` (
   `subscribe_count` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+    `exec_at` datetime NOT NULL,
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
@@ -35,6 +37,8 @@ CREATE TABLE `view_count_log` (
   `view_count` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+    `exec_at` datetime NOT NULL,
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```

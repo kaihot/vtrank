@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\SubscribeCountLog;
+use App\Models\ViewCountLog;
 use App\Models\Youtuber;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -25,15 +27,17 @@ class getChannel extends Command
     protected $description = 'Command description';
 
     private $youtuber;
+
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param Youtuber $youtuber
+     * @internal param Youtuber $youtuber
      */
-    public function __construct(Youtuber $youtouber)
+    public function __construct(Youtuber $youtuber)
     {
         parent::__construct();
-        $this->youtuber = $youtouber;
+        $this->youtuber = $youtuber;
 
     }
 
@@ -63,6 +67,7 @@ class getChannel extends Command
         //dd($youtubers);
 
         foreach ($youtubers as $youtuber){
+
             $this->info($youtuber->channel_id);
             $channel = Youtube::getChannelById($youtuber->channel_id);
             $data = [
@@ -76,13 +81,22 @@ class getChannel extends Command
                 "subscriber_count"  => $channel->statistics->subscriberCount,
                 "video_count"   => $channel->statistics->videoCount
             ];
+            //saving youtuber info
             $youtuber->fill($data)->save();
 
+            //insert today's view count
+            $vcLog = new ViewCountLog();
+            $vcLog->exec_at = Carbon::now()->format("Y-m-d h:m:s");
+            $vcLog->view_count = $channel->statistics->viewCount;
+            $youtuber->viewCountLog()->save($vcLog);
+
+            //insert today's subscribe count
+            $scLog = new SubscribeCountLog();
+            $scLog->exec_at = Carbon::now()->format("Y-m-d h:m:s");
+            $scLog->subscribe_count = $channel->statistics->subscriberCount;
+            $youtuber->subscribeCountLog()->save($scLog);
+            
         }
-
-
-
-
 
     }
 }

@@ -13,4 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 class SubscribeCountLog extends Model
 {
     protected $table = "subscribe_count_log";
+    protected $fillable = [
+        "youtuber_id",
+        "exec_at",
+        "subscribe_count"
+    ];
 }

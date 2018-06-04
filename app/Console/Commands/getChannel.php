@@ -86,16 +86,28 @@ class getChannel extends Command
 
             //insert today's view count
             $vcLog = new ViewCountLog();
-            $vcLog->exec_at = Carbon::now()->format("Y-m-d h:m:s");
-            $vcLog->view_count = $channel->statistics->viewCount;
-            $youtuber->viewCountLog()->save($vcLog);
+            $vcLog->updateOrCreate(
+                [
+                    "exec_at" => Carbon::now()->format("Y-m-d"),
+                    "youtuber_id" => $youtuber->id
+                ],
+                [
+                    "view_count" => $channel->statistics->viewCount
+                ]
+            );
 
             //insert today's subscribe count
             $scLog = new SubscribeCountLog();
-            $scLog->exec_at = Carbon::now()->format("Y-m-d h:m:s");
-            $scLog->subscribe_count = $channel->statistics->subscriberCount;
-            $youtuber->subscribeCountLog()->save($scLog);
-            
+            $scLog->updateOrCreate(
+                [
+                    "exec_at" => Carbon::now()->format("Y-m-d"),
+                    "youtuber_id" => $youtuber->id
+                ],
+                [
+                    "subscribe_count" => $channel->statistics->subscriberCount
+                ]
+            );
+
         }
 
     }

@@ -34,5 +34,12 @@ class Youtuber extends Model
         return $this->hasMany("App\Models\SubscribeCountLog", "youtuber_id");
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function aggregateCountLog(){
+        return $this->hasMany("App\Models\AggregateCountLog", "youtuber_id")->orderBy("count", "ASC");
+    }
+
 
 }

@@ -21,7 +21,7 @@ CREATE TABLE `youtubers` (
 CREATE TABLE `subscribe_count_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `youtuber_id` int(11) DEFAULT NULL,
-  `subscribe_count` int(11) DEFAULT NULL,
+  `subscribe_count` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
     `exec_at` datetime NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `subscribe_count_log` (
 CREATE TABLE `view_count_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `youtuber_id` int(11) DEFAULT NULL,
-  `view_count` int(11) DEFAULT NULL,
+  `view_count` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
     `exec_at` datetime NOT NULL,

@@ -48,9 +48,12 @@ CREATE TABLE `aggregate_count_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `day_identify` varchar(11) NOT NULL DEFAULT '',
   `item_identify` varchar(11) NOT NULL DEFAULT '',
-  `exec_date` date NOT NULL,
+  `exec_at` date NOT NULL,
   `created_at` date DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
+    `count` bigint(20) NOT NULL,
+  `youtuber_id` int(11) NOT NULL,
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```

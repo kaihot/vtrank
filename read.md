@@ -24,7 +24,7 @@ CREATE TABLE `subscribe_count_log` (
   `subscribe_count` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-    `exec_at` datetime NOT NULL,
+    `exec_at` date NOT NULL,
 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -37,8 +37,20 @@ CREATE TABLE `view_count_log` (
   `view_count` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-    `exec_at` datetime NOT NULL,
+    `exec_at` date NOT NULL,
 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+```angular2html
+CREATE TABLE `aggregate_count_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `day_identify` varchar(11) NOT NULL DEFAULT '',
+  `item_identify` varchar(11) NOT NULL DEFAULT '',
+  `exec_date` date NOT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```

@@ -57,3 +57,24 @@ CREATE TABLE `aggregate_count_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
+
+```angular2html
+CREATE TABLE `videos` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `youtuber_id` int(11) NOT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `title` text NOT NULL,
+  `thumbnail_default` text NOT NULL,
+  `thumbnail_medium` text NOT NULL,
+  `thumbnail_high` text NOT NULL,
+  `tags` text,
+  `view_count` bigint(20) DEFAULT NULL,
+  `like_count` bigint(20) DEFAULT NULL,
+  `dislike_count` bigint(20) DEFAULT NULL,
+  `player` text NOT NULL,
+  `video_id` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Alaouy\Youtube\Facades\Youtube;
+use App\Models\Video;
 use App\Models\Youtuber;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
@@ -49,8 +50,34 @@ class getChannelVideos extends Command
         foreach ($youtubers as $youtuber)
         {
             $this->info($youtuber->channel_id);
-            $videos = collect(Youtube::listChannelVideos($youtuber->channel_id, 2, "date"));
-            $videoInfo = Youtube::getVideoInfo($videos->pluck("id.videoId")->toArray());
+            $videos = collect(Youtube::listChannelVideos($youtuber->channel_id, 10, "date"));
+            $videoInfos = Youtube::getVideoInfo($videos->pluck("id.videoId")->toArray());
+
+            foreach ($videoInfos as $videoInfo)
+            {
+                $this->info($videoInfo->id);
+                $fillable = [
+                    "published_at" => $videoInfo->snippet->publishedAt,
+                    "title" => $videoInfo->snippet->title,
+                    "thumbnail_default" => $videoInfo->snippet->thumbnails->default->url,
+                    "thumbnail_medium"   => $videoInfo->snippet->thumbnails->medium->url,
+                    "thumbnail_high"    => $videoInfo->snippet->thumbnails->high->url,
+                    "tags" => implode(",", $videoInfo->snippet->tags),
+                    "view_count" => $videoInfo->statistics->viewCount,
+                    "like_count" => $videoInfo->statistics->likeCount,
+                    "dislike_count" => $videoInfo->statistics->dislikeCount,
+                    "player" => $videoInfo->player->embedHtml,
+                ];
+                $base = [
+                    "video_id" => $videoInfo->id,
+                    "youtuber_id" => $youtuber->id,
+                ];
+                $model = new Video();
+                $model->updateOrCreate(
+                    $base,
+                    $fillable
+                );
+            }
             dd($videos->pluck("id.videoId")->toArray(), $videoInfo);
         }
     }

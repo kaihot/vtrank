@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Alaouy\Youtube\Facades\Youtube;
+use App\Models\Youtuber;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 
 class getChannelVideos extends Command
 {
@@ -43,8 +45,13 @@ class getChannelVideos extends Command
      */
     public function handle()
     {
-        $videos = Youtube::listChannelVideos('UC4YaOt1yT-ZeyB0OmxHgolA', 2, "date");
-        $videoInfo = Youtube::getVideoInfo(["Inju8L5k0gs","QUd6LFDP9qE"]);
-        dd($videos);
+        $youtubers = $this->youtuber->get();
+        foreach ($youtubers as $youtuber)
+        {
+            $this->info($youtuber->channel_id);
+            $videos = collect(Youtube::listChannelVideos($youtuber->channel_id, 2, "date"));
+            $videoInfo = Youtube::getVideoInfo($videos->pluck("id.videoId")->toArray());
+            dd($videos->pluck("id.videoId")->toArray(), $videoInfo);
+        }
     }
 }

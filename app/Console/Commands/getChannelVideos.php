@@ -62,10 +62,10 @@ class getChannelVideos extends Command
                     "thumbnail_default" => $videoInfo->snippet->thumbnails->default->url,
                     "thumbnail_medium"   => $videoInfo->snippet->thumbnails->medium->url,
                     "thumbnail_high"    => $videoInfo->snippet->thumbnails->high->url,
-                    "tags" => implode(",", $videoInfo->snippet->tags),
+                    "tags" => implode(",", @$videoInfo->snippet->tags ?: []),
                     "view_count" => $videoInfo->statistics->viewCount,
-                    "like_count" => $videoInfo->statistics->likeCount,
-                    "dislike_count" => $videoInfo->statistics->dislikeCount,
+                    "like_count" => @$videoInfo->statistics->likeCount ?: 0,
+                    "dislike_count" => @$videoInfo->statistics->dislikeCount ?: 0,
                     "player" => $videoInfo->player->embedHtml,
                 ];
                 $base = [
@@ -78,7 +78,7 @@ class getChannelVideos extends Command
                     $fillable
                 );
             }
-            dd($videos->pluck("id.videoId")->toArray(), $videoInfo);
+            //dd($videos->pluck("id.videoId")->toArray(), $videoInfo);
         }
     }
 }

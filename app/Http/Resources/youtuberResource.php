@@ -25,7 +25,8 @@ class youtuberResource extends JsonResource
             "view_count" =>   $this->view_count,
             "subscriber_count" => $this->subscriber_count,
             "video_count" =>  $this->video_count,
-            "increase_count" => $this->count
+            "increase_count" => $this->count,
+            "nickname" => $this->nickname
         ];
     }
 }

@@ -116,6 +116,11 @@
                     { fanCount:"1,890,470人", increase:"+34234", increaseRate:"+5%", totalView:"122,225,939 回", text: "aaccca", avatar: 'https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg', title: 'ときのそら', subtitle: "A.I games" },
                 ]
             }
+        },
+        async asyncData({ store, params, error }){
+            await store.dispatch("GET_ONE_DAY_RANKING",{id: params.id}).catch(()=>{
+                error({ statusCode: 404, message: 'Post not found' });
+            });
         }
     }
 </script>

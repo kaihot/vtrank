@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
     /*
     ** Headers of the page
@@ -21,7 +23,8 @@ module.exports = {
     ** Build configuration
     */
     modules: [
-        '@nuxtjs/vuetify'
+        '@nuxtjs/vuetify',
+        "@nuxtjs/axios"
     ],
     plugins: [
         '~/plugins/vuetify'
@@ -34,6 +37,10 @@ module.exports = {
             accent: '#8c9eff',
             error: '#b71c1c'
         }
+    },
+    axios: {
+        credentials: true,
+        baseURL:process.env.FRONT_API_URL,
     },
     
     build: {

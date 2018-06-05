@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@nuxtjs/vuetify": "^0.4.2",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "@nuxtjs/axios": "^5.3.1",
+    "dotenv": "^5.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

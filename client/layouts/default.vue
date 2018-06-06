@@ -11,11 +11,13 @@
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app temporary absolute v-model="drawer"></v-navigation-drawer>
-        <v-layout row pb-2 mx-2 style="background:#fff;">
-            <v-flex xs10 offset-xs2>
+        <v-content>
+            <v-container fluid>
+                <v-layout  style="background:#fff;">
                 <nuxt></nuxt>
-            </v-flex>
-        </v-layout>
+                </v-layout>
+            </v-container>
+        </v-content>
 
 
         <v-footer app></v-footer>
@@ -54,7 +56,7 @@
     }
 
     body:before {
-        background-image: url("https://i.ytimg.com/vi/QUd6LFDP9qE/maxresdefault.jpg");
+        background: url("https://i.ytimg.com/vi/WwBbOQqCbvo/hqdefault.jpg") center center / cover no-repeat;
         background-size: cover;
         content: '';
         height: 265px;
@@ -62,7 +64,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        filter: blur(5px);
+        filter: blur(2px);
     }
 
     *, *:before, *:after {
@@ -97,5 +99,68 @@
     .button--grey:hover {
         color: #fff;
         background-color: #35495e;
+    }
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 100;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 200;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 300;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 400;
+        src: local('NotoSansJP-Regular.otf'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 500;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 700;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.otf) format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans Japanese';
+        font-style: normal;
+        font-weight: 900;
+        src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.otf) format('opentype');
     }
 </style>

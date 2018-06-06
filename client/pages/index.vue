@@ -1,5 +1,6 @@
 <template>
-    <div>
+<div style="width: 100%;">
+        <v-flex xs10 offset-xs1 md12 lg12>
         <v-breadcrumbs>
             <v-icon slot="divider">chevron_right</v-icon>
             <v-breadcrumbs-item
@@ -10,7 +11,38 @@
                 {{ item.text }}
             </v-breadcrumbs-item>
         </v-breadcrumbs>
+        </v-flex>
 
+        <div class="newVideo pa-3" style="width: 100%;">
+            <h2 class="display-1 pb-3">Recommend New Video</h2>
+            <v-layout row wrap>
+                <v-flex xs12 sm3 v-for="(item, index) in 4" :key="index" class="px-2">
+                    <v-card>
+                        <v-card-media
+                                class="white--text"
+                                height="100px"
+                                src="https://i.ytimg.com/vi/X606uvPSDgA/hqdefault.jpg"
+                        >
+                            <v-container fill-height fluid>
+                                <v-layout fill-height>
+                                    <v-flex xs12 align-end flexbox>
+                                        <span class="headline">Top 10 Australian beaches</span>
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card-media>
+                        <hr>
+                        <v-card-title>
+                            <div>
+                                <span class="grey--text">キズナアイ</span><br>
+                            </div>
+                        </v-card-title>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </div>
+
+        <v-flex xs10 offset-xs1>
         <v-tabs
                 slot="extension"
                 v-model="model"
@@ -106,9 +138,26 @@
                 </v-list>
             </v-tab-item>
         </v-tabs-items>
-    </div>
+        </v-flex>
+</div>
 </template>
 
+<style>
+    .rankBox{
+        background-color: #009688;
+        border-radius: 5px !important;
+        color: #fff;
+    }
+    .card__media__background{
+        filter:blur(2px);
+    }
+    .newVideo{
+        content: "";
+        background-color: #ebedef;
+        width: 100%;
+        /*//color: #fff;*/
+    }
+</style>
 <script>
     import { mapState } from 'vuex'
 
@@ -138,10 +187,3 @@
     }
 </script>
 
-<style scoped>
-    .rankBox{
-        background-color: #009688;
-        border-radius: 5px !important;
-        color: #fff;
-    }
-</style>

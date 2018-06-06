@@ -28,11 +28,11 @@
             </v-tab>
         </v-tabs>
         <v-container grid-list-md text-xs-center>
-            <v-layout row wrap align-baseline>
+            <v-layout row wrap align-baseline v-for="(item, index) in oneDayRanking" :key="index">
                 <v-flex xs1>
                     <v-list-tile-avatar color="rankBox" class="justify-center">
                         <div>
-                            <span>1</span>
+                            <span>{{index + 1}}</span>
                         </div>
                     </v-list-tile-avatar>
                 </v-flex>
@@ -41,22 +41,28 @@
                             slot="activator"
                             size="50px"
                     >
-                        <img
-                                src="https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
-                        >
+                        <img :src="item.thumbnail_default">
                     </v-avatar>
                 </v-flex>
 
                 <v-flex xs2>
                     <v-card-title primary-title>
-                            <span>キズナアイ</span><br>
-                            <span class="grey--text caption text-xs-right">A.I Games</span>
+                        <v-list-tile-title>{{item.nickname}}</v-list-tile-title>
+                        <v-list-tile-sub-title class="grey--text caption">{{item.channel_title}}</v-list-tile-sub-title>
                     </v-card-title>
                 </v-flex>
-                <v-flex xs7>
-                    <v-card dark color="primary">
-                        <v-card-text class="px-0">12</v-card-text>
-                    </v-card>
+                <v-flex xs3>
+                    <v-card-title primary-title>
+                        <v-list-tile-title>{{item.view_count}}view</v-list-tile-title>
+                        <v-list-tile-sub-title class="teal--text caption">+ {{item.increase_count}}</v-list-tile-sub-title>
+                    </v-card-title>
+                </v-flex>
+                <v-flex xs4>
+                    <v-list three-line>
+                        <v-list-tile-content>
+                            <v-list-tile-sub-title class="grey--text caption" v-html="item.description"></v-list-tile-sub-title>
+                        </v-list-tile-content>
+                    </v-list>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -104,6 +110,8 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
+
     export default {
         data() {
             return {
@@ -116,6 +124,11 @@
                     { fanCount:"1,890,470人", increase:"+34234", increaseRate:"+5%", totalView:"122,225,939 回", text: "aaccca", avatar: 'https://yt3.ggpht.com/-bzmyO7U7X7Q/AAAAAAAAAAI/AAAAAAAAAAA/CiCIkYBNVhE/s88-c-k-no-mo-rj-c0xffffff/photo.jpg', title: 'ときのそら', subtitle: "A.I games" },
                 ]
             }
+        },
+        computed:{
+            ...mapState([
+                "oneDayRanking"
+            ])
         },
         async asyncData({ store, params, error }){
             await store.dispatch("GET_ONE_DAY_RANKING",{id: params.id}).catch(()=>{

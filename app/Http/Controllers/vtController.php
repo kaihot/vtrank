@@ -34,7 +34,7 @@ class vtController extends Controller
             ->where("acl.day_identify", "=", "1day")
             ->where("acl.exec_at", "=", $this->target_day)
             ->orderBy("acl.count", 'desc')
-            ->paginate(7);
+            ->paginate(30);
         return youtuberResource::collection($re);
     }
 
@@ -49,7 +49,7 @@ class vtController extends Controller
             ->where("acl.day_identify", "=", "3day")
             ->where("acl.exec_at", "=", $this->target_day)
             ->orderBy("acl.count", 'desc')
-            ->paginate(7);
+            ->paginate(30);
         return youtuberResource::collection($re);
     }
 

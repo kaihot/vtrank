@@ -1,25 +1,15 @@
 <template>
     <v-card flat primary>
-        <v-toolbar flat extended>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer" primary color="primary"></v-toolbar-side-icon>
-            <v-toolbar-title>バーチャルYoutuberランキング</v-toolbar-title>
+        <v-toolbar flat extended dark>
+            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-title class="white--text">バーチャルYoutuberランキングくん</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn flat>今日</v-btn>
-                <v-btn flat>今週</v-btn>
-                <v-btn flat>今月</v-btn>
+                <v-btn flat></v-btn>
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app temporary absolute v-model="drawer"></v-navigation-drawer>
-        <v-content>
-            <v-container fluid>
-                <v-layout  style="background:#fff;">
-                <nuxt></nuxt>
-                </v-layout>
-            </v-container>
-        </v-content>
-
-
+                    <nuxt></nuxt>
         <v-footer app></v-footer>
     </v-card>
 </template>
@@ -41,7 +31,7 @@
         border-color: #009688 !important;
     }
     html {
-        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: 'Noto Sans Japanese', "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         font-size: 16px;
         word-spacing: 1px;
         -ms-text-size-adjust: 100%;
@@ -56,15 +46,13 @@
     }
 
     body:before {
-        background: url("https://i.ytimg.com/vi/WwBbOQqCbvo/hqdefault.jpg") center center / cover no-repeat;
-        background-size: cover;
+        background: teal;
         content: '';
         height: 265px;
         width: 100%;
         position: absolute;
         left: 0;
         top: 0;
-        filter: blur(2px);
     }
 
     *, *:before, *:after {

@@ -151,4 +151,19 @@
         url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff) format('woff'),
         url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.otf) format('opentype');
     }
+     .rankBox {
+         background-color: #009688;
+         border-radius: 5px !important;
+         color: #fff;
+     }
+
+    .pagination__item--active{
+        color: #fff !important;
+    }
+    .pagination__navigation{
+        box-shadow: none !important;
+    }
+    .pagination__item{
+        box-shadow: none !important;
+    }
 </style>

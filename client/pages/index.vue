@@ -3,12 +3,6 @@
         <v-container grid-list-md>
             <v-layout row wrap>
                 <v-flex md12 xs12 lg12>
-                    <!--<v-breadcrumbs class="white&#45;&#45;text pa-1">-->
-                        <!--<v-icon slot="divider">chevron_right</v-icon>-->
-                        <!--<v-breadcrumbs-item v-for="item in items" :key="item.text">-->
-                            <!--{{ item.text }}-->
-                        <!--</v-breadcrumbs-item>-->
-                    <!--</v-breadcrumbs>-->
                     <h1 class="title white--text">
                         日間バーチャルyoutuber再生数ランキング
                     </h1>
@@ -16,31 +10,7 @@
                 <v-flex xs9 md9 lg9>
                     <v-card color="white">
                         <v-flex xs10 offset-xs1>
-                            <v-tabs
-                                    slot="extension"
-                                    v-model="model"
-                                    centered
-                                    slider-color="indigo"
-                            >
-                                <v-tab :href="`#tab-1`">
-                                    日間(再生数)
-                                </v-tab>
-                                <v-tab :href="`#tab-2`">
-                                    今週(再生数)
-                                </v-tab>
-                                <v-tab :href="`#tab-3`">
-                                    今月(再生数)
-                                </v-tab>
-                                <v-tab :href="`#tab-4`">
-                                    日間(登録者数)
-                                </v-tab>
-                                <v-tab :href="`#tab-5`">
-                                    今週(登録者数)
-                                </v-tab>
-                                <v-tab :href="`#tab-6`">
-                                    今月(登録者数)
-                                </v-tab>
-                            </v-tabs>
+                            <tabs :tab="model"></tabs>
                             <v-container grid-list-md text-xs-center>
                                 <v-layout row wrap align-baseline v-for="(item, index) in oneDayRanking" :key="index">
                                     <v-flex xs1>
@@ -140,15 +110,16 @@
 </style>
 <script>
     import {mapState} from 'vuex'
+    import Tabs from "../components/tabs";
 
     export default {
+        components: {Tabs},
         data() {
             return {
                 drawer: null,
                 text: "a",
-                model: 'tab-1',
+                model: 'tab-3',
                 page:1,
-                items:[{text:"視聴回数ランキング"},{text:"今日"}]
             }
         },
         computed: {

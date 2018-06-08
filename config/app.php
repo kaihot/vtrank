@@ -160,6 +160,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 

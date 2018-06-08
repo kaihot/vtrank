@@ -164,9 +164,9 @@ class AggregateViewCount extends Command
         {
             $sameId = $sub2dayCount->firstWhere("youtuber_id", $axis->youtuber_id);
             if( ! is_null($sameId)){
-                $diffViewCount = $axis->view_count - $sameId->view_count;
-                $this->info($axis->view_count);
-                $this->info($sameId->view_count);
+                $diffViewCount = $axis->subscribe_count - $sameId->subscribe_count;
+                $this->info($axis->subscribe_count);
+                $this->info($sameId->subscribe_count);
                 $this->info(printf("youtuber_id : %s s diff subscribe count on 1 day : %s views", $axis->youtuber_id, $diffViewCount));
 
                 $aggCountLog = new AggregateCountLog();

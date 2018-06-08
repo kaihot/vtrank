@@ -14,6 +14,8 @@ class vtController extends Controller
 
     private $target_day;
 
+    const PAGE_NUM = 5;
+
     public function __construct(Youtuber $youtuber)
     {
         $this->youtuber = $youtuber;
@@ -34,7 +36,7 @@ class vtController extends Controller
             ->where("acl.day_identify", "=", "1day")
             ->where("acl.exec_at", "=", $this->target_day)
             ->orderBy("acl.count", 'desc')
-            ->paginate(30);
+            ->paginate(self::PAGE_NUM);
         return youtuberResource::collection($re);
     }
 
@@ -49,7 +51,7 @@ class vtController extends Controller
             ->where("acl.day_identify", "=", "3day")
             ->where("acl.exec_at", "=", $this->target_day)
             ->orderBy("acl.count", 'desc')
-            ->paginate(30);
+            ->paginate(self::PAGE_NUM);
         return youtuberResource::collection($re);
     }
 
@@ -64,7 +66,41 @@ class vtController extends Controller
             ->where("acl.day_identify", "=", "7day")
             ->where("acl.exec_at", "=", $this->target_day)
             ->orderBy("acl.count", 'desc')
-            ->paginate(7);
+            ->paginate(self::PAGE_NUM);
+        return youtuberResource::collection($re);
+    }
+
+    public function oneDaySubscribeRanking()
+    {
+        $re = $this->youtuber
+            ->join("aggregate_count_log as acl", "acl.youtuber_id", "=", "youtubers.id")
+            ->where("acl.item_identify", "=", "subscribe")
+            ->where("acl.day_identify", "=", "1day")
+            ->where("acl.exec_at", "=", $this->target_day)
+            ->orderBy("acl.count", 'desc')
+            ->paginate(self::PAGE_NUM);
+        return youtuberResource::collection($re);
+    }
+    public function threeDaySubscribeRanking()
+    {
+        $re = $this->youtuber
+            ->join("aggregate_count_log as acl", "acl.youtuber_id", "=", "youtubers.id")
+            ->where("acl.item_identify", "=", "subscribe")
+            ->where("acl.day_identify", "=", "3day")
+            ->where("acl.exec_at", "=", $this->target_day)
+            ->orderBy("acl.count", 'desc')
+            ->paginate(self::PAGE_NUM);
+        return youtuberResource::collection($re);
+    }
+    public function sevenDaySubscribeRanking()
+    {
+        $re = $this->youtuber
+            ->join("aggregate_count_log as acl", "acl.youtuber_id", "=", "youtubers.id")
+            ->where("acl.item_identify", "=", "subscribe")
+            ->where("acl.day_identify", "=", "7day")
+            ->where("acl.exec_at", "=", $this->target_day)
+            ->orderBy("acl.count", 'desc')
+            ->paginate(self::PAGE_NUM);
         return youtuberResource::collection($re);
     }
 }

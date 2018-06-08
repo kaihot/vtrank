@@ -24,4 +24,7 @@ Route::group(["prefix" => "vt"], function(){
     Route::get("/one-day-ranking", "vtController@oneDayRanking");
     Route::get("/three-day-ranking", "vtController@threeDayRanking");
     Route::get("/seven-day-ranking", "vtController@sevenDayRanking");
+    Route::get("/one-day-subscribe-ranking", "vtController@oneDaySubscribeRanking");
+    Route::get("/three-day-subscribe-ranking", "vtController@threeDaySubscribeRanking");
+    Route::get("/seven-day-subscribe-ranking", "vtController@sevenDaySubscribeRanking");
 });

@@ -4,7 +4,7 @@
                 <v-layout row wrap>
                     <v-flex md12 xs12 lg12>
                         <h1 class="title white--text">
-                            日間バーチャルyoutuber再生数ランキング
+                            3日間バーチャルyoutuber再生数ランキング
                         </h1>
                     </v-flex>
                     <v-flex xs9 md9 lg9>
@@ -60,8 +60,8 @@
         },
         async asyncData({query, store, params, error}) {
             console.log(query);
-             await store.dispatch("GET_ONE_DAY_VIEW_RANKING", {page: query.page}).catch(() => {
-                error({statusCode: 404, message: 'Posteeee not found'});
+             await store.dispatch("GET_THREE_DAY_VIEW_RANKING", {page: query.page}).catch(() => {
+                error({statusCode: 404, message: 'Po3232323st not found'});
             });
         }
     }

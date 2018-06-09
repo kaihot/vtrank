@@ -5,7 +5,12 @@
             <v-toolbar-title class="white--text">バーチャルYoutuberランキングくん</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn flat></v-btn>
+                <v-btn flat nuxt replace exact :to="{name:'new-videos'}">
+                    新着動画
+                </v-btn>
+                <v-btn flat nuxt replace exact :to="{name:'one-day-view-ranking'}">
+                    ランキング
+                </v-btn>
             </v-toolbar-items>
         </v-toolbar>
         <v-navigation-drawer app temporary absolute v-model="drawer"></v-navigation-drawer>

@@ -13,4 +13,9 @@ class Video extends Model
             "thumbnail_high", "tags", "view_count", "like_count", "dislike_count", "player", "video_id"
         ];
 
+
+    public function youtuber(){
+        return $this->belongsTo("App\Models\Youtuber");
+    }
+
 }

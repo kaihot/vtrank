@@ -49,7 +49,7 @@
         },
         data() {
             return {
-                model: 'tab-1'
+                model: 'one-day-view-ranking'
             }
         },
         computed: {

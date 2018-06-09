@@ -5,19 +5,23 @@
             centered
             slider-color="indigo"
             @input="handleTab"
-    ><v-tab nuxt replace exact :to="{name:'one-day-view-ranking'}">
+    >
+        <v-tab :to="{name:'one-day-view-ranking'}">
             日間(再生数)
         </v-tab>
-        <v-tab nuxt replace exact :to="{name:'three-day-view-ranking'}">
+        <v-tab :to="{name:'three-day-view-ranking'}">
             3日間(再生数)
         </v-tab>
-        <v-tab :href="`#tab-4`">
+        <v-tab :to="{name:'one-day-subscribe-ranking'}">
             日間(登録者数)
         </v-tab>
-        <v-tab :href="`#tab-2`">
+        <v-tab :to="{name:'three-day-subscribe-ranking'}">
+            3日間(登録者数)
+        </v-tab>
+        <v-tab :href="`#tab-2`" disabled>
             今週(再生数)
         </v-tab>
-        <v-tab :href="`#tab-5`">
+        <v-tab :href="`#tab-5`" disabled>
             今週(登録者数)
         </v-tab>
         <v-tab :href="`#tab-3`" disabled>

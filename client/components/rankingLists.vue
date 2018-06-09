@@ -59,7 +59,7 @@
             handlePaginate(page){
                 console.log("ada");
                 console.log(page);
-                window.location.href = `/one-day-view-ranking?page=${page}`;
+                window.location.href = `${$nuxt.$route.path}?page=${page}`;
             }
         },
     }

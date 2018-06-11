@@ -3,7 +3,9 @@ import Vuex from 'vuex'
 const store = () => new Vuex.Store({
     state: {
         ranking:[],
-        rankingMeta:[]
+        rankingMeta:[],
+        channel:[],
+        channel_video:[]
     },
     mutations: {
     },
@@ -76,7 +78,6 @@ const store = () => new Vuex.Store({
                     throw new Error("a");
                 });
         },
-
         GET_NEW_VIDEOS({state, commit}, {page}){
             page = page || 1;
             return this.$axios.$get(`api/vt/video/recent?page=${page}`)
@@ -84,6 +85,26 @@ const store = () => new Vuex.Store({
                     //console.log(response);
                     state.videos = response.data
                     state.videosMeta = response.meta
+                }).catch((error) => {
+                    throw new Error("a");
+                });
+        },
+        GET_CHANNEL({state, commit}, {id}){
+            return this.$axios.$get(`api/vt/channel/${id}`)
+                .then((response) => {
+                    //console.log(response);
+                    state.channel = response.data
+                    //state.videosMeta = response.meta
+                }).catch((error) => {
+                    throw new Error("a");
+                });
+        },
+        GET_VIDEO_BY_ID({state, commit}){
+            return this.$axios.$get(`api/vt/video/${state.channel.id}`)
+                .then((response) => {
+                    //console.log(response);
+                    state.channel_video = response.data
+                    //state.videosMeta = response.meta
                 }).catch((error) => {
                     throw new Error("a");
                 });

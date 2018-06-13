@@ -80,20 +80,20 @@
                 </v-card>
             </v-layout>
         </v-container>
-        <v-dialog v-model="dialog" max-width="500px">
-            <v-card color="white">
+        <v-dialog v-model="dialog" max-width="800px" hide-overlay>
+            <v-card color="grey lighten-2">
                 <v-card-title>
-                    {{this.modalContent.title}}
+                    <div class="title mb-2">{{this.modalContent.title}}</div>
                     <div class="yy" style="">
                         <iframe width="100%" height="100%" :src="getAutoPlayiframe(this.modalContent.video_id)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                 </v-card-title>
                 <v-card-text>
-                    <v-btn color="primary" dark >Open Dialog 3</v-btn>
-                    aaaaa
+                    {{this.modalContent.description}}
+                    <v-chip outline color="teal lighten-3" v-for="(tag, i) in this.modalContent.tags" :key="i">{{tag}}</v-chip>
                 </v-card-text>
                 <v-card-actions>
-                    <v-btn color="primary" flat @click.stop="dialog=false">Close</v-btn>
+                    <v-btn color="primary" flat @click.native="dialog=false">Close</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -114,28 +114,6 @@
         width: 100% !important;
         height: 100% !important;
     }
-    .rankBox {
-        background-color: #009688;
-        border-radius: 5px !important;
-        color: #fff;
-    }
-
-    .pagination__item--active{
-        color: #fff !important;
-    }
-    .pagination__navigation{
-        box-shadow: none !important;
-    }
-    .pagination__item{
-        box-shadow: none !important;
-    }
-
-    .newVideo {
-        content: "";
-        background-color: #ebedef;
-        width: 100%;
-        /*//color: #fff;*/
-    }
 </style>
 <script>
     import {mapState} from 'vuex'
@@ -148,7 +126,8 @@
                 dialog: false,
                 modalContent:{
                     title:"",
-                    video_id:""
+                    video_id:"",
+                    description:""
                 }
             }
         },

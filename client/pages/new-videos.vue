@@ -1,5 +1,23 @@
  <template>
         <v-content>
+            <v-dialog v-model="dialog" max-width="800px" scrollable hide-overlay>
+                <v-card color="grey lighten-2">
+                    <v-card-title>
+                        <!--<div class="title mb-2">{{this.modalContent.title}}</div>-->
+                        <div class="yy" style="">
+                            <!--<iframe width="100%" height="100%" :src="getAutoPlayiframe(this.modalContent.video_id)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+                        </div>
+                    </v-card-title>
+                    <v-card-text>
+                        aa
+                        <!--{{this.modalContent.description}}-->
+                        <!--<v-chip outline color="teal lighten-3" v-for="(tag, i) in this.modalContent.tags" :key="i">{{tag}}</v-chip>-->
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn color="primary" flat @click.stop="dialog=false">Close</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
             <v-container grid-list-md>
                 <v-layout row wrap>
                     <v-flex md12 xs12 lg12>
@@ -21,7 +39,7 @@
                             <!--</v-layout>-->
                             <v-container grid-list-md text-xs-center>
                                 <v-layout row wrap>
-                            <v-flex fill-height xs4 md4 lg4 v-for="(video, index) in videos" :key="index">
+                            <v-flex fill-height xs4 md4 lg4 v-for="(video, index) in videos" :key="index" @click.stop="dialog=true">
                                 <v-card raised>
                                     <v-card-media
                                             class="white--text"
@@ -79,7 +97,8 @@
         },
         data() {
             return {
-                model: 'tab-1'
+                model: 'tab-1',
+                dialog:false
             }
         },
         computed: {

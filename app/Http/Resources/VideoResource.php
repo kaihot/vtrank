@@ -21,6 +21,7 @@ class VideoResource extends JsonResource
             "view_count"    => $this->view_count,
             "player"    => $this->player,
             "video_id"  => $this->video_id,
+            "tags"  => explode(",", $this->tags),
             "youtuber"  => youtuberResource::make($this->youtuber)
         ];
     }

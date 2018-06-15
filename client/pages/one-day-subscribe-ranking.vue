@@ -7,14 +7,14 @@
                             日間バーチャルyoutuber登録者数ランキング
                         </h1>
                     </v-flex>
-                    <v-flex xs9 md9 lg9>
+                    <v-flex xs12 sm12 md9 lg9>
                         <v-card color="white">
                             <tabs :tab="model"></tabs>
                             <ranking-lists :lists="ranking" :rankingMeta="rankingMeta"></ranking-lists>
                         </v-card>
 
                     </v-flex>
-                    <v-flex xs3 md3 lg3>
+                    <v-flex xs12 sm12 md3 lg3>
                         <v-flex xs12>
                             <div class="headline white--text">おすすめ動画<hr class="mb-1"></div>
 

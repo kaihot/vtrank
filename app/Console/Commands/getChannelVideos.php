@@ -50,7 +50,7 @@ class getChannelVideos extends Command
         foreach ($youtubers as $youtuber)
         {
             $this->info($youtuber->channel_id);
-            $videos = collect(Youtube::listChannelVideos($youtuber->channel_id, 10, "date"));
+            $videos = collect(Youtube::listChannelVideos($youtuber->channel_id, 30, "date"));
             $videoInfos = Youtube::getVideoInfo($videos->pluck("id.videoId")->toArray());
 
             foreach ($videoInfos as $videoInfo)
@@ -59,6 +59,7 @@ class getChannelVideos extends Command
                 $fillable = [
                     "published_at" => $videoInfo->snippet->publishedAt,
                     "title" => $videoInfo->snippet->title,
+                    "description" => $videoInfo->snippet->description,
                     "thumbnail_default" => $videoInfo->snippet->thumbnails->default->url,
                     "thumbnail_medium"   => $videoInfo->snippet->thumbnails->medium->url,
                     "thumbnail_high"    => $videoInfo->snippet->thumbnails->high->url,

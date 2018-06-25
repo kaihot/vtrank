@@ -7,21 +7,21 @@
                         {{channel.channel_title}}
                     </h1>
                 </v-flex>
-                <v-flex xs8 md8 lg8>
+                <v-flex xs12 md8 lg8>
                     <v-card v-if="channel_video.length > 0">
                         <div class="yy" style="">
                             <iframe width="100%" height="100%" :src="getAutoPlayiframe(channel_video[0].video_id)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                     </v-card>
                 </v-flex>
-                <v-flex xs4 md4 lg4>
+                <v-flex xs12 md4 lg4>
                     <v-card color="white darken-2">
                         <v-card-title primary-title>
                             <div class="headline display-1 text-xs-center">{{channel.channel_title}}<hr class="ma-3" size="1"></div>
                             <div>
 
                             </div>
-
+                            <p>
                                 <v-chip label color="pink" text-color="white">
                                     チャンネル登録者数 {{channel.view_count}} 人
                                 </v-chip>
@@ -35,7 +35,7 @@
                                 <v-chip label color="pink" text-color="white">
                                     総投稿数 {{channel.video_count}} 本
                                 </v-chip>
-
+                            </p>
                         </v-card-title>
                     </v-card>
                 </v-flex>
@@ -55,7 +55,7 @@
                     <!--</v-layout>-->
                     <v-container grid-list-md text-xs-center>
                         <v-layout row wrap>
-                            <v-flex fill-height xs4 md4 lg4 v-for="(video, index) in channel_video" :key="index" @click="openModal(index)">
+                            <v-flex fill-height xs6 md4 lg4 v-for="(video, index) in channel_video" :key="index" @click="openModal(index)">
                                 <v-card raised >
                                     <v-card-media
                                             class="white--text"

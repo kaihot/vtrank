@@ -14,7 +14,7 @@ class vtController extends Controller
 
     private $target_day;
 
-    const PAGE_NUM = 5;
+    const PAGE_NUM = 20;
 
     public function __construct(Youtuber $youtuber)
     {
@@ -102,5 +102,12 @@ class vtController extends Controller
             ->orderBy("acl.count", 'desc')
             ->paginate(self::PAGE_NUM);
         return youtuberResource::collection($re);
+    }
+
+
+    public function channel($id)
+    {
+        $data = $this->youtuber->where("channel_id","=", $id)->first();
+        return youtuberResource::make($data);
     }
 }

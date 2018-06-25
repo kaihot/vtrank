@@ -18,7 +18,7 @@ class videoController extends Controller
 
     public function recent()
     {
-        $data = $this->video->orderBy("published_at", "desc")->paginate(5);
+        $data = $this->video->orderBy("published_at", "desc")->paginate(9);
         return VideoResource::Collection($data);
     }
 
@@ -26,7 +26,7 @@ class videoController extends Controller
     {
         $data = $this->video->whereHas("youtuber" ,function($q) use ($id){
                 $q->where("channel_id", $id);
-        })->orderBy("published_at", "desc")->paginate(5);
+        })->orderBy("published_at", "desc")->paginate(9);
         return VideoResource::Collection($data);
     }
 }

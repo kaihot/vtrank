@@ -1,8 +1,8 @@
 <template>
+
     <v-card flat primary>
         <v-toolbar flat extended dark>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title class="white--text">バーチャルYoutuberランキングくん</v-toolbar-title>
+            <v-toolbar-title class="white--text"><nuxt-link :to='{name:"index"}' style="text-decoration: none; color:white;">バーチャルYoutuberランキングくん</nuxt-link></v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat nuxt replace exact :to="{name:'new-videos'}">
@@ -13,8 +13,7 @@
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
-        <v-navigation-drawer app temporary absolute v-model="drawer"></v-navigation-drawer>
-                    <nuxt></nuxt>
+        <nuxt></nuxt>
         <v-footer app></v-footer>
     </v-card>
 </template>
@@ -23,9 +22,6 @@
     export default {
         data() {
             return {
-                drawer: null,
-                text: "a",
-                model: 'tab-2',
             }
         }
     }

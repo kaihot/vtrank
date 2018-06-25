@@ -42,4 +42,9 @@ class Youtuber extends Model
     }
 
 
+    public function video(){
+        return $this->hasMany("App\Models\Video");
+    }
+
+
 }

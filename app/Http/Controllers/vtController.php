@@ -105,9 +105,14 @@ class vtController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return static
+     */
     public function channel($id)
     {
         $data = $this->youtuber->where("channel_id","=", $id)->first();
         return youtuberResource::make($data);
     }
+
 }

@@ -16,17 +16,32 @@ class videoController extends Controller
         $this->video = $video;
     }
 
+    /**
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function recent()
     {
         $data = $this->video->orderBy("published_at", "desc")->paginate(9);
         return VideoResource::Collection($data);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function channelId($id)
     {
         $data = $this->video->whereHas("youtuber" ,function($q) use ($id){
                 $q->where("channel_id", $id);
         })->orderBy("published_at", "desc")->paginate(9);
+        return VideoResource::Collection($data);
+    }
+
+    /**
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function recommend(){
+        $data = $this->video->inRandomOrder()->limit(5)->get();
         return VideoResource::Collection($data);
     }
 }

@@ -2,8 +2,8 @@
         <v-content>
             <v-container grid-list-md>
                 <v-layout row wrap>
-                    <v-flex md12 xs12 lg12>
-                        <h1 class="title white--text">
+                    <v-flex sm12 md12 xs12 lg12>
+                        <h1 class="title white--text mb-2">
                             日間バーチャルyoutuber再生数ランキング
                         </h1>
                     </v-flex>
@@ -15,23 +15,7 @@
 
                     </v-flex>
                     <v-flex xs12 sm12 md3 lg3>
-                        <v-flex xs12>
-                            <div class="headline white--text">おすすめ動画<hr class="mb-1"></div>
-
-                            <v-card color="blue-grey darken-2" class="white--text">
-                                <v-card-media src="https://i.ytimg.com/vi/MuFxkZMtv_M/hqdefault.jpg" height="160px"></v-card-media>
-                            </v-card>
-                        </v-flex>
-                        <v-flex xs12>
-                            <v-card color="blue-grey darken-2" class="white--text">
-                                <v-card-title primary-title>
-                                    <div class="headline">vTuberまとめました</div>
-                                    <div>要望などがあればこちらからお願いします。</div>
-                                </v-card-title>
-                                <v-card-actions>
-                                </v-card-actions>
-                            </v-card>
-                        </v-flex>
+                        <recommend-videos/>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -41,9 +25,11 @@
     import {mapState} from 'vuex'
     import Tabs from "../components/tabs";
     import RankingLists from "../components/rankingLists";
+    import RecommendVideos from "../components/recommendVideos";
 
     export default {
         components: {
+            RecommendVideos,
             RankingLists,
             Tabs
         },

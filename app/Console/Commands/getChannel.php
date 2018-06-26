@@ -69,7 +69,7 @@ class getChannel extends Command
         foreach ($youtubers as $youtuber){
 
             $this->info($youtuber->channel_id);
-            $channel = Youtube::getChannelById($youtuber->channel_id);
+            $channel = Youtube::getChannelById($youtuber->channel_id, false, ['id', 'snippet', 'contentDetails', 'statistics', 'invideoPromotion',"brandingSettings"]);
             $data = [
                 "channel_title"     => $channel->snippet->title,
                 "channel_description" => $channel->snippet->description,
@@ -79,7 +79,8 @@ class getChannel extends Command
                 "thumbnail_high"    => $channel->snippet->thumbnails->high->url,
                 "view_count"    => $channel->statistics->viewCount,
                 "subscriber_count"  => $channel->statistics->subscriberCount,
-                "video_count"   => $channel->statistics->videoCount
+                "video_count"   => $channel->statistics->videoCount,
+                "banner"        => $channel->brandingSettings->image->bannerImageUrl,
             ];
             //saving youtuber info
             $youtuber->fill($data)->save();

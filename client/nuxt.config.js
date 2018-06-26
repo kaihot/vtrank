@@ -24,7 +24,10 @@ module.exports = {
     */
     modules: [
         '@nuxtjs/vuetify',
-        "@nuxtjs/axios"
+        "@nuxtjs/axios",
+        ['@nuxtjs/google-analytics', {
+            id: 'UA-119527059-2'
+        }]
     ],
     plugins: [
         '~/plugins/vuetify'

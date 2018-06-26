@@ -54,6 +54,7 @@
 </template>
 
 <script>
+
     export default {
         name: "ranking-lists",
         props:["lists", "pageNum", "rankingMeta"],

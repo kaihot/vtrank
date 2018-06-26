@@ -5,7 +5,9 @@ const store = () => new Vuex.Store({
         ranking:[],
         rankingMeta:[],
         channel:[],
-        channel_video:[]
+        channel_video:[],
+        channelVideoMeta:[],
+        recommendVideos:[]
     },
     mutations: {
     },
@@ -17,7 +19,6 @@ const store = () => new Vuex.Store({
             console.log(`api/vt/one-day-ranking?page=${page}`);
             return this.$axios.$get(`api/vt/one-day-ranking?page=${page}`)
                 .then((response) => {
-                    console.log(response);
                     state.ranking = response.data
                     state.rankingMeta = response.meta
                 }).catch((error) => {
@@ -30,7 +31,7 @@ const store = () => new Vuex.Store({
             console.log(`api/vt/one-day-ranking?page=${page}`);
             return this.$axios.$get(`api/vt/one-day-subscribe-ranking?page=${page}`)
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
                     state.ranking = response.data
                     state.rankingMeta = response.meta
                 }).catch((error) => {
@@ -44,7 +45,6 @@ const store = () => new Vuex.Store({
             console.log(`api/vt/three-day-ranking?page=${page}`);
             return this.$axios.$get(`api/vt/three-day-ranking?page=${page}`)
                 .then((response) => {
-                    console.log(response);
                     state.ranking = response.data
                     state.rankingMeta = response.meta
                 }).catch((error) => {
@@ -57,7 +57,6 @@ const store = () => new Vuex.Store({
             page = page || 1;
             return this.$axios.$get(`api/vt/three-day-subscribe-ranking?page=${page}`)
                 .then((response) => {
-                    console.log(response);
                     state.ranking = response.data
                     state.rankingMeta = response.meta
                 }).catch((error) => {
@@ -99,16 +98,27 @@ const store = () => new Vuex.Store({
                     throw new Error("a");
                 });
         },
-        GET_VIDEO_BY_ID({state, commit}){
-            return this.$axios.$get(`api/vt/video/${state.channel.id}`)
+        GET_VIDEO_BY_ID({state, commit}, {page}){
+            page = page || 1;
+            return this.$axios.$get(`api/vt/video/${state.channel.channel_id}?page=${page}`)
                 .then((response) => {
                     //console.log(response);
                     state.channel_video = response.data
+                    state.channelVideoMeta = response.meta
                     //state.videosMeta = response.meta
                 }).catch((error) => {
                     throw new Error("a");
                 });
         },
+        GET_RECOMMEND_VIDEOS({state}){
+            this.$axios.$get(`api/vt/video/recommend`)
+                .then((response) => {
+                    console.log(response);
+                    state.recommendVideos = response.data
+                }).catch((error) => {
+                    throw new Error("error");
+                });
+        }
     }
 });
 

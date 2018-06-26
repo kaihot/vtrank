@@ -28,6 +28,10 @@ Route::group(["prefix" => "vt"], function(){
     Route::get("/three-day-subscribe-ranking", "vtController@threeDaySubscribeRanking");
     Route::get("/seven-day-subscribe-ranking", "vtController@sevenDaySubscribeRanking");
     Route::get("/video/recent", "videoController@recent");
+    Route::get("/video/recommend", "videoController@recommend");
     Route::get("/video/{id}", "videoController@channelId");
     Route::get("/channel/{id}", "vtController@channel");
+
+
+
 });

@@ -28,6 +28,7 @@ class youtuberResource extends JsonResource
             "increase_count" => $this->count,
             "description" => $this->channel_description,
             "nickname" => $this->nickname,
+            "banner" => $this->banner,
             //"videos"    => VideoResource::collection($this->video)
         ];
     }

@@ -5,14 +5,14 @@
                 <v-flex sm12 xs9 md9 lg9>
                     <v-card color="white">
                         <v-layout>
-                                <v-flex md6 lg6 >
+                                <v-flex md12 lg12>
                                     <v-card flat>
-                                        <h1 id="introduction" class="headline primary--text">
+                                        <h1 id="introduction" class="headline grey--text text-xs-center">
                                             <div>
                                                 <p>1day Ranking</p>
                                             </div>
                                         </h1>
-                                        <v-card-media src="https://i.ytimg.com/vi/nY-HJ-_Qm5Y/hqdefault.jpg" height="200px">
+                                        <v-card-media src="https://yt3.ggpht.com/2PpglZgu13Ls8Gj2ZSBFrKRRTDEx5dab_7BebNMQfxgY3Ur_sd-bGuod9yFthPU2dAREgqG1sA=w1060-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no" height="200px">
                                         </v-card-media>
                                         <v-card-title primary-title>
                                             <div>
@@ -26,28 +26,6 @@
                                         </v-card-actions>
                                     </v-card>
                                 </v-flex>
-                                <v-flex md6 lg6>
-                                    <v-card flat>
-                                        <h1 id="w" class="headline primary--text">
-                                            <div>
-                                                <p>1day Ranking</p>
-                                            </div>
-                                        </h1>
-                                        <v-card-media src="https://i.ytimg.com/vi/Kmdv9wjVRSI/hqdefault.jpg" height="200px">
-                                        </v-card-media>
-                                        <v-card-title primary-title>
-                                            <div>
-                                                <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                                                <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
-                                            </div>
-                                        </v-card-title>
-                                        <v-card-actions>
-                                            <v-btn flat color="orange">Share</v-btn>
-                                            <v-btn flat color="orange">Explore</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-flex>
-
                         </v-layout>
                     </v-card>
 

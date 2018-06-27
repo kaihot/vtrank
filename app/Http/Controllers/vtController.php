@@ -104,7 +104,6 @@ class vtController extends Controller
         return youtuberResource::collection($re);
     }
 
-
     /**
      * @param $id
      * @return static
@@ -115,4 +114,26 @@ class vtController extends Controller
         return youtuberResource::make($data);
     }
 
+    /**
+     *
+     */
+    public function top()
+    {
+        $data = [];
+        foreach (["1day", "3day", "7day"] as $item) {
+            foreach (["subscribe", "view"] as $iden) {
+                $d = $this->youtuber
+                    ->join("aggregate_count_log as acl", "acl.youtuber_id", "=", "youtubers.id")
+                    ->where("acl.item_identify", "=", $iden)
+                    ->where("acl.day_identify", "=", $item)
+                    ->where("acl.exec_at", "=", $this->target_day)
+                    ->orderBy("acl.count", 'desc')
+                    ->first();
+                $key = sprintf("%s %s No1", $item, $iden);
+                $data[$key] = youtuberResource::make($d);;
+            }
+        }
+
+        return $data;
+    }
 }

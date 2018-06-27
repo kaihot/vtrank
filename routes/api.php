@@ -30,6 +30,7 @@ Route::group(["prefix" => "vt"], function(){
     Route::get("/video/recent", "videoController@recent");
     Route::get("/video/recommend", "videoController@recommend");
     Route::get("/video/{id}", "videoController@channelId");
+    Route::get("/channel/top", "vtController@top");
     Route::get("/channel/{id}", "vtController@channel");
 
 

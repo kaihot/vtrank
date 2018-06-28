@@ -46,5 +46,24 @@ class Youtuber extends Model
         return $this->hasMany("App\Models\Video");
     }
 
+    public function getNuxtLinkPathAttribute()
+    {
+        $day = "one-day";
+        switch ($this->day_identify){
+            case "1day":
+                $day = "one-day";
+                break;
+            case "3day":
+                $day = "three-day";
+                break;
+            case "7day":
+                $day = "seven-day";
+                break;
+            default:
+                $day = "one-day";
+                break;
+        }
+        return sprintf("%s-%s-ranking", $day, $this->item_identify);
+    }
 
 }

@@ -29,6 +29,8 @@ class youtuberResource extends JsonResource
             "description" => $this->channel_description,
             "nickname" => $this->nickname,
             "banner" => $this->banner,
+            "item_identify" => $this->item_identify,
+            "nuxtLink" => $this->nuxtLinkPath,
             //"videos"    => VideoResource::collection($this->video)
         ];
     }

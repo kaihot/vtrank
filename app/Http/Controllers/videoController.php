@@ -41,7 +41,7 @@ class videoController extends Controller
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function recommend(){
-        $data = $this->video->inRandomOrder()->limit(5)->get();
+        $data = $this->video->inRandomOrder()->limit(6)->get();
         return VideoResource::Collection($data);
     }
 }

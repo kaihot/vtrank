@@ -120,7 +120,8 @@ class vtController extends Controller
     public function top()
     {
         $data = [];
-        foreach (["1day", "3day", "7day"] as $item) {
+//        foreach (["1day", "3day", "7day"] as $item) {
+        foreach (["1day", "3day"] as $item) {
             foreach (["subscribe", "view"] as $iden) {
                 $d = $this->youtuber
                     ->join("aggregate_count_log as acl", "acl.youtuber_id", "=", "youtubers.id")

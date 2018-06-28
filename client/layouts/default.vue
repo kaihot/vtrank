@@ -1,8 +1,7 @@
 <template>
-
     <v-card flat primary>
-        <v-toolbar flat extended dark>
-            <v-toolbar-title class="white--text"><nuxt-link :to='{name:"index"}' style="text-decoration: none; color:white;">バーチャルYoutuberランキングくん</nuxt-link></v-toolbar-title>
+        <v-toolbar flat extended>
+            <v-toolbar-title class="white--text subheading"><nuxt-link :to='{name:"index"}' style="text-decoration: none; color:white;">バーチャルYoutuberランキングくん</nuxt-link></v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat nuxt replace exact :to="{name:'new-videos'}">
@@ -12,9 +11,16 @@
                     ランキング
                 </v-btn>
             </v-toolbar-items>
+            <v-toolbar-items class="hidden-sm-and-up">
+                <v-btn flat nuxt replace exact small icon :to="{name:'new-videos'}" style="text-decoration: none; color:white;">
+                    <v-icon>fiber_new</v-icon>
+                </v-btn>
+                <v-btn flat nuxt replace exact small icon :to="{name:'one-day-view-ranking'}" style="text-decoration: none; color:white;">
+                    <v-icon>trending_up</v-icon>
+                </v-btn>
+            </v-toolbar-items>
         </v-toolbar>
-        <nuxt></nuxt>
-        <v-footer app></v-footer>
+        <nuxt ></nuxt>
     </v-card>
 </template>
 
@@ -22,11 +28,15 @@
     export default {
         data() {
             return {
+                drawer: false
             }
         }
     }
 </script>
 <style>
+    .application.theme--light{
+
+    }
     .primary {
         background-color: #009688 !important;
         border-color: #009688 !important;
@@ -42,11 +52,8 @@
         box-sizing: border-box;
     }
 
-    body {
-        background-color: #edecec;
-    }
 
-    body:before {
+    body::before {
         background: teal;
         content: '';
         height: 265px;

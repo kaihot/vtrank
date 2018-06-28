@@ -7,7 +7,8 @@ const store = () => new Vuex.Store({
         channel:[],
         channel_video:[],
         channelVideoMeta:[],
-        recommendVideos:[]
+        recommendVideos:[],
+        top:[]
     },
     mutations: {
     },
@@ -113,11 +114,21 @@ const store = () => new Vuex.Store({
         GET_RECOMMEND_VIDEOS({state}){
             this.$axios.$get(`api/vt/video/recommend`)
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
                     state.recommendVideos = response.data
                 }).catch((error) => {
-                    throw new Error("error");
-                });
+                throw new Error("error");
+            });
+        },
+        GET_TOP_CHANNEL({state}){
+            return this.$axios.$get(`api/vt/channel/top`)
+                .then((response) => {
+                    console.log(response);
+
+                    state.top = response
+                }).catch((error) => {
+                throw new Error("error");
+            });
         }
     }
 });

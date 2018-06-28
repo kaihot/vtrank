@@ -38,6 +38,14 @@
                 model: 'tab-1'
             }
         },
+        head () {
+            return {
+                title: "バーチャルYoutuberの3日間登録者数ランキング！",
+                meta: [
+                    { hid: 'description', name: 'description', content: 'バーチャルYoutuberのランキング一覧' },
+                ]
+            }
+        },
         computed: {
             ...mapState([
                 "ranking",

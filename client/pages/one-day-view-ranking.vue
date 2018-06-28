@@ -38,6 +38,14 @@
                 model: 'one-day-view-ranking'
             }
         },
+        head () {
+            return {
+                title: "バーチャルYoutuberの日間閲覧数ランキング！",
+                meta: [
+                    { hid: 'description', name: 'description', content: 'バーチャルYoutuberのランキング一覧' },
+                ]
+            }
+        },
         computed: {
             ...mapState([
                 "ranking",

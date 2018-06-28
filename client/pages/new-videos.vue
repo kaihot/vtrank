@@ -20,13 +20,13 @@
             </v-dialog>
             <v-container grid-list-md>
                 <v-layout row wrap>
-                    <v-flex md12 xs12 lg12>
+                    <v-flex sm12 md12 xs12 lg12>
                         <h1 class="title white--text">
                             新着動画
                         </h1>
                         <hr size="1" class="ma-1 white--text">
                     </v-flex>
-                    <v-flex xs9 md9 lg9>
+                    <v-flex sm12 xs12 md9 lg9>
                         <v-card color="white">
                             <!--<v-layout row wrap align-baseline>-->
 
@@ -39,7 +39,7 @@
                             <!--</v-layout>-->
                             <v-container grid-list-md text-xs-center>
                                 <v-layout row wrap>
-                            <v-flex fill-height xs4 md4 lg4 v-for="(video, index) in videos" :key="index" @click.stop="dialog=true">
+                            <v-flex fill-height xs6 sm6 md4 lg4 v-for="(video, index) in videos" :key="index" @click.stop="dialog=true">
                                 <v-card raised>
                                     <v-card-media
                                             class="white--text"
@@ -62,7 +62,7 @@
                             </div>
                         </v-card>
                 </v-flex>
-                    <v-flex xs3 md3 lg3>
+                    <v-flex sm12 xs12 md3 lg3>
                         <recommend-videos/>
                     </v-flex>
                 </v-layout>
@@ -85,6 +85,14 @@
             return {
                 model: 'tab-1',
                 dialog:false
+            }
+        },
+        head () {
+            return {
+                title: "バーチャルYoutuber最新動画一覧！",
+                meta: [
+                    { hid: 'description', name: 'description', content: 'バーチャルYoutuberの最新の動画をお届けしています。' },
+                ]
             }
         },
         computed: {

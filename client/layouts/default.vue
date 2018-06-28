@@ -12,10 +12,10 @@
                 </v-btn>
             </v-toolbar-items>
             <v-toolbar-items class="hidden-sm-and-up">
-                <v-btn flat nuxt replace exact small icon :to="{name:'new-videos'}" style="text-decoration: none; color:white;">
+                <v-btn flat  small icon :to="{name:'new-videos'}" style="text-decoration: none; color:white;">
                     <v-icon>fiber_new</v-icon>
                 </v-btn>
-                <v-btn flat nuxt replace exact small icon :to="{name:'one-day-view-ranking'}" style="text-decoration: none; color:white;">
+                <v-btn flat small icon :to="{name:'one-day-view-ranking'}" style="text-decoration: none; color:white;">
                     <v-icon>trending_up</v-icon>
                 </v-btn>
             </v-toolbar-items>

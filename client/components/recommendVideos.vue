@@ -1,19 +1,22 @@
 <template>
     <div>
-        <div class="headline white--text">おすすめ動画<hr class="mb-1"></div>
-        <v-flex xs12>
+        <p class="headline white--text">おすすめ動画<v-divider></v-divider></p>
+        <v-layout row wrap>
+            <v-flex xs12 sm6 md12  v-for="(item, index) in this.recommendVideos" :key="index" @click="openModal(index)">
+            <v-card color="blue-grey darken-2" class="white--text">
+                <v-card-media :src=item.thumbnail_high height="160px"></v-card-media>
+            </v-card>
+        </v-flex>
+        </v-layout>
+
+        <v-flex xs12 sm6 md12>
             <v-card color="blue-grey darken-2" class="white--text">
                 <v-card-title primary-title>
                     <div class="headline">vTuberまとめました</div>
-                    <div>要望などがあればこちらからお願いします。</div>
+                    <div>要望などがあれば<a href="https://goo.gl/forms/lZKubAbV4E1ym20F3">こちらから</a>お願いします。</div>
                 </v-card-title>
                 <v-card-actions>
                 </v-card-actions>
-            </v-card>
-        </v-flex>
-        <v-flex xs12  v-for="(item, index) in this.recommendVideos" :key="index" @click="openModal(index)">
-            <v-card color="blue-grey darken-2" class="white--text">
-                <v-card-media :src=item.thumbnail_high height="160px"></v-card-media>
             </v-card>
         </v-flex>
         <v-dialog v-model="dialog" max-width="800px" hide-overlay>

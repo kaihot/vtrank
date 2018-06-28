@@ -3,11 +3,11 @@
     <v-container>
         <nuxt-link v-for="(item, index) in lists" :key="index" :to='{name:"channel-id",params:{id:item.channel_id}}'
                    style="text-decoration: none;">
-            <v-layout row wrap align-baseline justify-center mb-2>
+            <v-layout row wrap align-baseline justify-space-between mb-2>
                 <v-flex xs2 sm1 md1 lg1>
                     <v-list-tile-avatar color="rankBox" class="">
                         <div>
-                            <span>{{index + 1}}</span>
+                            <span>{{index+rankingMeta.from + 1}}</span>
                         </div>
                     </v-list-tile-avatar>
                 </v-flex>
@@ -25,7 +25,7 @@
                     <div class="title grey--text text--darken-1 caption">{{item.channel_title}}
                     </div>
                 </v-flex>
-                <v-flex xs6 sm3 md4 lg3>
+                <v-flex xs6 offset-xs6 offset-sm0 offset-md0 offset-lg0 sm3 md4 lg3>
                     <!--<v-card-title primary-title>-->
                     <!--<v-list-tile-title>{{item.view_count}}view</v-list-tile-title>-->
                     <!--<v-list-tile-sub-title class="teal&#45;&#45;text caption">+ {{item.increase_count}}</v-list-tile-sub-title>-->
@@ -65,7 +65,6 @@
         },
         methods:{
             handlePaginate(page){
-                console.log("ada");
                 console.log(page);
                 window.location.href = `${$nuxt.$route.path}?page=${page}`;
             }

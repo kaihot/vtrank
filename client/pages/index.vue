@@ -2,35 +2,63 @@
     <v-content>
         <v-container grid-list-md>
             <v-layout row wrap>
-                <v-flex sm12 xs9 md9 lg9>
+                <v-flex sm12 xs12 md9 lg9>
                     <v-card color="white">
-                        <v-layout>
-                                <v-flex md12 lg12>
-                                    <v-card flat>
-                                        <h1 id="introduction" class="headline grey--text text-xs-center">
-                                            <div>
-                                                <p>1day Ranking</p>
+                        <v-layout row wrap>
+                            <v-flex sm12 md12 lg12 v-for="(channel, index) in top" :key="index">
+                                <v-card flat>
+                                    <nuxt-link :to='{name:channel.nuxtLink}' style="text-decoration: none;">
+                                        <h1>
+                                            <div class="teal--text text-xs-center">
+                                                <p> - {{index}}</p>
                                             </div>
                                         </h1>
-                                        <v-card-media src="https://yt3.ggpht.com/2PpglZgu13Ls8Gj2ZSBFrKRRTDEx5dab_7BebNMQfxgY3Ur_sd-bGuod9yFthPU2dAREgqG1sA=w1060-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no" height="200px">
-                                        </v-card-media>
+                                        <v-card-media :src="channel.banner" height="200px"></v-card-media>
                                         <v-card-title primary-title>
-                                            <div>
-                                                <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                                                <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
-                                            </div>
+                                            <v-layout row wrap align-baseline justify-space-between mb-2>
+                                                <v-flex xs3 sm1 md2 lg1>
+                                                    <v-avatar slot="activator" size="50px">
+                                                        <img :src="channel.thumbnail_default">
+                                                    </v-avatar>
+                                                </v-flex>
+                                                <v-flex xs6 sm3 md4 lg3>
+                                                    <div class="subheading">{{channel.nickname}}</div>
+                                                    <div class="title grey--text text--darken-1 caption">
+                                                        {{channel.channel_title}}
+                                                    </div>
+                                                </v-flex>
+                                                <v-flex xs6 sm3 md4 lg3>
+                                                    <v-list-tile-title>{{channel.view_count}} view</v-list-tile-title>
+                                                    <v-list-tile-sub-title class="teal--text caption"
+                                                                           v-if="channel.item_identify==`view`">+
+                                                        {{channel.increase_count}}
+                                                    </v-list-tile-sub-title>
+                                                </v-flex>
+                                                <v-flex xs6 sm3 md4 lg3>
+                                                    <v-list-tile-title>{{channel.subscriber_count}} subscribe
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title class="teal--text caption"
+                                                                           v-if="channel.item_identify==`subscribe`">+
+                                                        {{channel.increase_count}}
+                                                    </v-list-tile-sub-title>
+                                                </v-flex>
+                                            </v-layout>
                                         </v-card-title>
-                                        <v-card-actions>
-                                            <v-btn flat color="orange">Share</v-btn>
-                                            <v-btn flat color="orange">Explore</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-flex>
+                                    </nuxt-link>
+
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn flat color="orange" :to='{name:channel.nuxtLink}'
+                                               style="text-decoration: none;">もっと見る
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-flex>
                         </v-layout>
                     </v-card>
 
                 </v-flex>
-                <v-flex xs3 md3 lg3>
+                <v-flex xs12 sm12 md3 lg3>
                     <recommend-videos/>
                 </v-flex>
             </v-layout>
@@ -70,9 +98,9 @@
     export default {
         head () {
             return {
-                title: this.title,
+                title: "バーチャルYoutuber人気ランキング一覧",
                 meta: [
-                    { hid: 'description', name: 'description', content: 'My custom description' }
+                    { hid: 'description', name: 'description', content: 'バーチャルYoutuberの最新の人気ランキングをお届けしています。' },
                 ]
             }
         },
@@ -86,7 +114,7 @@
         },
         computed: {
             ...mapState([
-                "ranking"
+                "top"
             ])
         },
         methods:{
@@ -96,7 +124,7 @@
             }
         },
         async asyncData({store, params, error}) {
-            await store.dispatch("GET_RECOMMEND_VIDEOS", {page: 1}).catch(() => {
+            await store.dispatch("GET_TOP_CHANNEL", {page: 1}).catch(() => {
                 error({statusCode: 404, message: 'Posteeee not found'});
             });
         }

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AggregateViewCount;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        '\App\Console\Commands\AggregateViewCount',
+        '\App\Console\Commands\getChannel',
+        '\App\Console\Commands\getChannelVideos',
     ];
 
     /**
@@ -24,8 +27,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('youtube:aggregation1day')->cron('1 0-23/4 * * *');
+        $schedule->command('youtube:getChannel')->cron('0 0-23/4 * * *');
+        $schedule->command('youtube:getChannelVideos')->hourly();
     }
 
     /**

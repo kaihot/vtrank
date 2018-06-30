@@ -10,7 +10,7 @@ module.exports = {
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {hid: 'description', name: 'description', content: 'バーチャルYoutuberまとめ'},
-            {hid: 'title', name: 'title', content: 'バーチャルYoutuber人気ランキング一覧'}
+            {hid: 'google-site-verification', name: 'google-site-verification', content: '0l7YgBmzieNbwhW8uSLVhJnsImNIBpa4VwURb_KoDAs'},
         ],
         link: [
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
